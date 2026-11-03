@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin panel</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+
+<!-- Login screen -->
+<div id="login-screen" class="login-body" hidden>
+  <form class="login card" id="login-form">
+    <h1>Admin login</h1>
+    <div class="flash err" id="login-error" role="alert" hidden></div>
+    <label for="u">Username</label>
+    <input id="u" name="username" autocomplete="username" required value="admin">
+    <label for="p">Password</label>
+    <input id="p" name="password" type="password" autocomplete="current-password" required>
+    <button class="btn primary" type="submit">Log in</button>
+    <a class="muted small" href="/">← Back to website</a>
+  </form>
+</div>
+
+<!-- Admin app -->
+<div id="app" class="shell" hidden>
+  <aside class="side">
+    <a class="brand" href="#/">Admin panel</a>
+    <nav id="side-nav"></nav>
+    <div class="side-foot">
+      <a href="/" target="_blank" rel="noopener">View website ↗</a>
+      <button type="button" class="linklike" id="logout">Log out</button>
+    </div>
+  </aside>
+  <main class="main" id="view"><p class="muted">Loading…</p></main>
+</div>
+
+<!-- Shown when the API isn't reachable -->
+<div id="offline" class="login-body" hidden>
+  <div class="login card">
+    <h1>Admin needs the server file</h1>
+    <p>The admin panel saves changes through <code>_worker.js</code>, which runs on Cloudflare. It isn't responding on this site.</p>
+    <p class="muted small">Check that you uploaded the whole folder, including <b>_worker.js</b>, and set up the database binding named <b>DB</b>. The steps are in README.md.</p>
+    <a class="muted small" href="/">← Back to website</a>
+  </div>
+</div>
+
+<script src="/admin/admin.js" defer></script>
+</body>
+</html>
