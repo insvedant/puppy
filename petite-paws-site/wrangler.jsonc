@@ -1,0 +1,21 @@
+{
+  // Cloudflare Workers config, used by "npx wrangler deploy".
+  "name": "petite-paws",
+  "main": "server/worker.js",
+  "compatibility_date": "2025-09-01",
+
+  // The website and admin panel (HTML, CSS, JS, images)
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*", "/media/*"]
+  },
+
+  // Database and photo storage. Cloudflare creates them automatically on the first deploy
+  // and keeps using the same ones afterwards. Nothing to paste here.
+  "d1_databases": [{ "binding": "DB" }],
+  "r2_buckets": [{ "binding": "IMAGES" }],
+
+  "observability": { "enabled": true }
+}
